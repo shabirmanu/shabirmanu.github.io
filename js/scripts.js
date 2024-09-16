@@ -18,5 +18,5 @@ function loadHTML(url, elementId, isHead) {
 document.addEventListener('DOMContentLoaded', () => {
     loadHTML('/partials/head.html', null, true);
     loadHTML('/partials/header.html', 'header', false);
-    loadHTML('/partials/footer.html', 'footer', false);
+    loadHTML('/partials/footer.html', 'footer_wrapper', false);
 });
