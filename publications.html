@@ -176,14 +176,12 @@
 </footer>
 
 <script>
-       document.getElementById('fileInput').addEventListener('change', function(event) {
-    const file = event.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        
-        reader.onload = function(event) {
-            const csvText = event.target.result;
-            Papa.parse(csvText, {
+      document.addEventListener('DOMContentLoaded', function() {
+    fetch('includes/first_author_citations.csv')
+        .then(response => response.text())
+        .then(text => {
+            // Parse CSV data using PapaParse
+            Papa.parse(text, {
                 header: false,
                 skipEmptyLines: true,
                 complete: function(results) {
@@ -200,11 +198,10 @@
                     });
                 }
             });
-        };
-
-        reader.readAsText(file);
-    }
+        })
+        .catch(error => console.error('Error reading the CSV file:', error));
 });
+
 
 
     </script>
